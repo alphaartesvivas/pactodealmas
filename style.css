@@ -1,0 +1,335 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN INICIAL
+   ========================================================================== */
+:root {
+    --color-primary: #2d4a3e;     /* Verde bosque elegante */
+    --color-secondary: #8da399;   /* Verde sage suave */
+    --color-accent: #c4a482;      /* Tono tierra / Arena cálido */
+    --color-dark: #222222;        /* Gris casi negro */
+    --color-light: #faf8f5;       /* Blanco roto / Cálido */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --transition: all 0.4s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   2. BOTÓN DE WHATSAPP FLOTANTE
+   ========================================================================== */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #20ba5a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar .logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: white;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.navbar nav a:hover {
+    color: var(--color-accent);
+}
+
+.navbar .nav-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px 22px;
+    border-radius: 30px;
+}
+
+.navbar .nav-btn:hover {
+    background-color: white;
+    color: var(--color-primary) !important;
+}
+
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    /* Degradado oscuro sobre fondo de naturaleza (puedes cambiar la URL por tu foto ideal) */
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.3)), 
+                url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1600') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: white;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-weight: 300;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 0.9.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    background-color: #b5936f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   5. SECCIÓN DE EXPERIENCIAS (GRID & CARDS)
+   ========================================================================== */
+.features {
+    padding: 100px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-accent);
+    font-size: 1.3rem;
+}
+
+.section-title h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    font-weight: 400;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin: 20px auto 0 auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(45, 74, 62, 0.1);
+}
+
+.card-image {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Imágenes temporales de stock premium (Reemplazables) */
+.bg-equino { background-image: url('https://images.unsplash.com/photo-1534349257-226cd660991e?q=80&w=600'); }
+.bg-entorno { background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600'); }
+.bg-wellness { background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600'); }
+
+.card-content {
+    padding: 30px;
+}
+
+.card-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   6. SECCIÓN FILOSOFÍA
+   ========================================================================== */
+.philosophy {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 120px 10%;
+    text-align: center;
+}
+
+.philosophy-content h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    font-style: italic;
+    max-width: 900px;
+    margin: 0 auto 25px auto;
+    line-height: 1.4;
+}
+
+.philosophy-content p {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   7. FOOTER (PIE DE PÁGINA)
+   ========================================================================== */
+footer {
+    background-color: #1c2e27;
+    color: #c9d4cf;
+    padding: 60px 5% 30px 5%;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.motivational-quote {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255,255,255,0.08);
+    margin-bottom: 30px;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (ADAPTACIÓN A MÓVILES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px 5%;
+    }
+    .navbar nav {
+        display: none; /* En un diseño avanzado esto sería un menú hamburguesa, aquí se simplifica para mantener CSS puro estable */
+    }
+    .hero {
+        background-position: 65% center; /* Ajusta la imagen de fondo para móviles */
+    }
+    .features {
+        padding: 60px 5%;
+    }
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
