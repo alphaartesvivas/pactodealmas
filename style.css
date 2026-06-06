@@ -179,7 +179,6 @@ body {
     height: 100vh;
     min-height: 650px;
     position: relative;
-    /* Reemplazar url por imagen principal de campaña */
     background: linear-gradient(rgba(28, 43, 36, 0.6), rgba(28, 43, 36, 0.45)), 
                 url('IMG_1717.PNG') no-repeat center center/cover;
     display: flex;
@@ -285,7 +284,7 @@ body {
     min-height: 450px;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto Paralaje Premium */
+    background-attachment: fixed;
 }
 
 .banner-overlay-content {
@@ -315,7 +314,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* DETALLE EXTRA: ¿ES PARA NOSOTROS? */
+/* EXTRA: ¿ES PARA NOSOTROS? */
 .qualification-section {
     background-color: var(--white);
 }
@@ -601,9 +600,10 @@ body {
     font-weight: 300;
 }
 
-/* CONTRAPORTADA: CIERRE FINAL */
+/* ==========================================================================
+   4. PIE DE PÁGINA / CONTRAPORTADA EXCLUSIVA (MEJORADO Y INTEGRADO)
+   ========================================================================== */
 .final-closure {
-    background-color: var(--bg-dark-olive);
     color: var(--white);
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -644,24 +644,105 @@ body {
     color: var(--white);
 }
 
-.social-channels {
-    margin-bottom: 50px;
+/* Contenedor Flex para la Alineación de los Logos de Socios */
+.brand-alliance-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.logo-box {
+    flex: 1;
+    max-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alliance-img {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Aplica tono blanco premium unificado */
+    opacity: 0.85;
+    transition: var(--transition-smooth);
+}
+
+.alliance-img:hover {
+    opacity: 1;
+    transform: scale(1.04);
+}
+
+/* Sección Asesor Comercial */
+.commercial-contact-wrapper {
+    margin: 45px 0;
+}
+
+.contact-label {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.btn-commercial-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--gold-accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+.btn-commercial-whatsapp:hover {
+    background-color: var(--gold-accent);
+    color: var(--bg-dark-olive);
+    box-shadow: 0 12px 25px rgba(196, 162, 118, 0.2);
+}
+
+/* Canales de Redes Sociales Distribuidas */
+.social-channels-extended {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 45px 0;
+}
+
+.social-group {
+    font-size: 0.95rem;
+}
+
+.group-title {
+    color: var(--gold-accent);
+    font-weight: 600;
+    margin-right: 10px;
 }
 
 .channel-link {
-    color: var(--white);
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
     transition: var(--transition-smooth);
 }
 
 .channel-link:hover {
-    color: var(--gold-accent);
+    color: var(--white);
+    text-decoration: underline;
 }
 
 .bullet-sep {
-    margin: 0 15px;
+    margin: 0 10px;
     color: rgba(255,255,255,0.2);
 }
 
@@ -670,10 +751,11 @@ body {
     letter-spacing: 1px;
     color: rgba(255,255,255,0.4);
     text-transform: uppercase;
+    margin-top: 50px;
 }
 
 /* ==========================================================================
-   4. RESPONSIVE DESIGN (OPTIMIZACIÓN MÓVIL)
+   5. RESPONSIVE DESIGN (REDISEÑO EXCLUSIVO PARA SMARTPHONES)
    ========================================================================== */
 @media (max-width: 900px) {
     .gallery-layout {
@@ -685,14 +767,18 @@ body {
 }
 
 @media (max-width: 768px) {
-    .container, .container-narrow {
+    .container {
         padding: 60px 0;
+    }
+    .container-narrow {
+        padding: 60px 0;
+        width: 88%; /* Ajuste sutil para ganar espacio de lectura */
     }
     .section-header h2 {
         font-size: 2.2rem;
     }
     .question-title {
-        font-size: 2rem;
+        font-size: 1.9rem;
     }
     .timeline-container {
         border-left: none;
@@ -710,7 +796,55 @@ body {
     .pricing-card {
         padding: 40px 20px;
     }
+    .inclusions-list {
+        grid-template-columns: 1fr;
+    }
     .banner-experience .parallax-bg {
-        background-attachment: scroll; /* Suaviza el rendimiento móvil */
+        background-attachment: scroll; /* Corrige saltos visuales en iOS y Android */
+    }
+
+    /* 📱 CORRECCIONES DE BALANCE COMPLETO PARA EL FOOTER MÓVIL */
+    .poetic-closure {
+        font-size: 1.6rem;
+        margin-bottom: 40px;
+    }
+    .brand-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Reorganización de logos a grilla centrada */
+    .brand-alliance-logos {
+        flex-direction: row; /* Mantener en fila compacta en lugar de romperse */
+        gap: 30px;           /* Separación controlada */
+        justify-content: center;
+        margin: 30px auto;
+    }
+    
+    .logo-box {
+        max-width: 120px;    /* Tamaño equilibrado en pantallas de smartphones */
+        min-width: 100px;
+    }
+    
+    .alliance-img {
+        max-height: 55px;    /* Altura protectora para pantallas pequeñas */
+    }
+
+    /* Expansión del CTA Comercial */
+    .btn-commercial-whatsapp {
+        width: 100%;
+        max-width: 320px;    /* Cómodo, centrado y fácil de clickear con el pulgar */
+    }
+
+    /* Redes sociales en bloque apilado para evitar desbordes */
+    .social-channels-extended {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        margin: 35px 0;
+    }
+    
+    .social-group {
+        display: block;
+        text-align: center;
     }
 }
